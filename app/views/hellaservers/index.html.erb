@@ -1,0 +1,20 @@
+<h1> Listing Hellaservers</h1>
+
+<table>
+  <tr>
+    <th>Uri</th>
+    <th>Download path</th>
+  </tr>
+
+  <% for hellaserver in @hellaservers %>
+  <tr>
+    <td><%= h hellaserver.uri %></td>
+    <td><%= h hellaserver.download_path %></td>
+    <td><%= link_to 'Show', hellaserver %></td>
+    <td><%= link_to 'Edit', edit_hellaserver_path(hellaserver) %></td>
+    <td><%= link_to 'Destroy', hellaserver, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Hellaserver', new_hellaserver_path %></p>

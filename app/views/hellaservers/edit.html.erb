@@ -1,0 +1,12 @@
+<h1>Editing Hellaserver</h1>
+
+<% form_for(@hellaserver) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Update' %></p>
+<% end %>
+
+<p>
+  <%= link_to 'Show', @hellaserver %>
+  |
+  <%= link_to 'Back', hellaservers_path %>
+</p>

@@ -1,0 +1,8 @@
+<h1>New Download</h1>
+
+<% form_for(@download) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Create' %></p>
+<% end %>
+
+<p><%= link_to 'Back', downloads_path %></p>

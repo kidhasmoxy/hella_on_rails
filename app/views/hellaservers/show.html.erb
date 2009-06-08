@@ -1,0 +1,12 @@
+<dl>
+  <dt>Uri</dt>
+  <dd><%= h @hellaserver.uri %></dd>
+  <dt>Download path</dt>
+  <dd><%= h @hellaserver.download_path %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_hellaserver_path(@hellaserver)%>
+  |
+  <%= link_to 'Back', hellaservers_path %>
+</p>

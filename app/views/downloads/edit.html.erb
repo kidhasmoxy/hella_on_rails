@@ -1,0 +1,12 @@
+<h1>Editing Download</h1>
+
+<% form_for(@download) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Update' %></p>
+<% end %>
+
+<p>
+  <%= link_to 'Show', @download %>
+  |
+  <%= link_to 'Back', downloads_path %>
+</p>

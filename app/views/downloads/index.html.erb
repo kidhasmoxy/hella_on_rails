@@ -1,0 +1,30 @@
+<h1> Listing Downloads</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Path</th>
+    <th>Size</th>
+    <th>Nzb</th>
+    <th>Completed on</th>
+    <th>Rating</th>
+    <th>Comment</th>
+  </tr>
+
+  <% for download in @downloads %>
+  <tr>
+    <td><%= h download.name %></td>
+    <td><%= h download.path %></td>
+    <td><%= h download.size %></td>
+    <td><%= h download.nzb_id %></td>
+    <td><%= h download.completed_on %></td>
+    <td><%= h download.rating %></td>
+    <td><%= h download.comment %></td>
+    <td><%= link_to 'Show', download %></td>
+    <td><%= link_to 'Edit', edit_download_path(download) %></td>
+    <td><%= link_to 'Destroy', download, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Download', new_download_path %></p>

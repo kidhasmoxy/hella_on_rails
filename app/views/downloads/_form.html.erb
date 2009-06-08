@@ -1,0 +1,18 @@
+<%= form.error_messages %>
+
+<dl>
+  <dt><%= form.label :name %></dt>
+  <dd><%= form.text_field :name %></dd>
+  <dt><%= form.label :path %></dt>
+  <dd><%= form.text_field :path %></dd>
+  <dt><%= form.label :size %></dt>
+  <dd><%= form.text_field :size %></dd>
+  <dt><%= form.label :nzb_id %></dt>
+  <dd><%= form.text_field :nzb_id %></dd>
+  <dt><%= form.label :completed_on %></dt>
+  <dd><%= form.datetime_select :completed_on %></dd>
+  <dt><%= form.label :rating %></dt>
+  <dd><%= form.text_field :rating %></dd>
+  <dt><%= form.label :comment %></dt>
+  <dd><%= form.text_area :comment %></dd>
+</dl>

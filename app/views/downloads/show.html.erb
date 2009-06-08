@@ -1,0 +1,22 @@
+<dl>
+  <dt>Name</dt>
+  <dd><%= h @download.name %></dd>
+  <dt>Path</dt>
+  <dd><%= h @download.path %></dd>
+  <dt>Size</dt>
+  <dd><%= h @download.size %></dd>
+  <dt>Nzb</dt>
+  <dd><%= h @download.nzb_id %></dd>
+  <dt>Completed on</dt>
+  <dd><%= h @download.completed_on %></dd>
+  <dt>Rating</dt>
+  <dd><%= h @download.rating %></dd>
+  <dt>Comment</dt>
+  <dd><%= h @download.comment %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_download_path(@download)%>
+  |
+  <%= link_to 'Back', downloads_path %>
+</p>
