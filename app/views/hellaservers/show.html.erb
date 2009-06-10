@@ -1,12 +1,83 @@
-<dl>
+<!-- <dl>
   <dt>Uri</dt>
   <dd><%= h @hellaserver.uri %></dd>
   <dt>Download path</dt>
   <dd><%= h @hellaserver.download_path %></dd>
-</dl>
+</dl> -->
 
+<div class="span-24 append-bottom last" id="server-header">
+	<p class="box">HellaNZB version <%= h @status['version'] -%>, uptime <%= h @status['uptime'] -%>
+	<br />
+	Total amount downloaded: <%= h @status['total_dl_mb'].to_s -%> MB, total nzbs downloaded: <%= h @status['total_dl_nzbs'].to_s -%>
+	<br />
+	Disk Space Left:
+	</p>
+</div>
+<!-- end server-header -->
+<div class="clear span-5 colborder" id="server-functions">
+	<div class="box">
+  <div  id="server-speed">
+		  <fieldset>
+				<legend>Speed Slider</legend>
+			</fieldset>
+  </div>
+  <!-- end server-speed -->
+
+	<div id="server-upload">
+		<form>
+		  <fieldset>
+				<legend>Upload NZB File</legend>
+			</fieldset>
+		</form>
+  </div>
+
+  <!-- end server-upload -->
+  <div id="server-nzbupload">
+		<form>
+		  <fieldset>
+				<legend>Newbin ID</legend>
+			</fieldset>
+		</form>
+  </div>
+  <!-- end server-nzbupload -->
+	</div>
+</div>
+<!-- end server-functions -->
+<div class="span-18 last" id="server-status">
+
+  <div class="box" id="server-queue">
+	  <div class="softbox" id="server-downloadinfo">
+	  	Currently <%= @status['is_paused'] == true ? "paused" : "downloading at #{h @status['rate']} Kb/Sec" -%> [max <%= h @status['maxrate'].to_s -%>Kb/Sec]
+	  </div>
+		<div>
+			<ul id="server-queue-list">
+			<%= render :partial => 'queue', :locals => {:downloading => @downloading, :queue => @queue, :status => @status, :hellaserver => @hellaserver} -%>
+			</ul>
+		</div>
+		<div id='sortable-code'>
+			<%= sortable_element("server-queue-list", :containment => "server-queue-list", :url => update_queue_hellaserver_url(@hellaserver)) %>	
+		</div>
+  </div>
+
+  <!-- end server-queue -->
+  <div class="box" id="server-processing">
+  	processing
+  </div>
+  <!-- end server-processing -->
+  <div  class="box" id="server-log">
+  	<% @log.each do |log_entry| %>
+			<span class="log_<%= h log_entry.keys.to_s.downcase -%>"> 
+			<%= h log_entry.values.to_s -%>
+			</span>
+		<br />
+		<% end %>
+  </div>
+  <!-- end server-log -->
+</div>
+<div class="span-24 last">
 <p>
   <%= link_to 'Edit', edit_hellaserver_path(@hellaserver)%>
   |
   <%= link_to 'Back', hellaservers_path %>
 </p>
+</div>

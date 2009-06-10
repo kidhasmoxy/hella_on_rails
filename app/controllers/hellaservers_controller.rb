@@ -10,7 +10,12 @@ class HellaserversController < ApplicationController
 
   def show
     @hellaserver = Hellaserver.find(params[:id])
-
+    @status = @hellaserver.call('status')
+    @queue = @status['currently_downloading'] + @status["queued"]
+    @processing = @status["currently_processing"]
+    @log = @status["log_entries"]
+    @downloading = @status["currently_downloading"]
+    
     respond_to do |format|
       format.html
       format.xml  { render :xml => @hellaserver }
@@ -69,4 +74,29 @@ class HellaserversController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def update_queue
+    newqueue = params['server-queue-list'.intern]
+    hellaserver = Hellaserver.find(params[:id])
+    hellaserver.call('force',newqueue[0])
+    1.upto((newqueue.length - 1)) do |i|
+      hellaserver.call('move',newqueue[i], i)
+    end
+    
+    status = hellaserver.call('status')
+    queue = status['currently_downloading'] + status["queued"]
+    downloading = status["currently_downloading"]
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page.replace_html 'server-queue-list', 
+            render(:partial => 'queue', :locals => {:downloading => downloading, :queue => queue, :status => status})
+          page.replace_html 'sortable-code',
+           sortable_element("server-queue-list", :containment => "server-queue-list", :url => update_queue_hellaserver_url(hellaserver))
+        end 
+      }
+    end
+  end
+  
 end

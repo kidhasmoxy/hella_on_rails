@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :hellaservers
+  map.resources :hellaservers, :member => { :update_queue => :post }
 
   map.resources :downloads
 

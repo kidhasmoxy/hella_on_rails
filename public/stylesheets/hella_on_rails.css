@@ -1,0 +1,26 @@
+.box{
+	text-align: center;
+	background-color: darkgrey;
+	border-color: black;
+	border: thin solid;
+}
+
+#server-header {
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+.softbox, #server-queue-list li {
+	padding:.4em;
+	margin:0 0 1.5em 0;
+	border:1px solid #ccc;
+	background-color: grey;
+}
+
+#server-queue-list ul, #server-queue-list li {
+	text-align: left;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	
+}

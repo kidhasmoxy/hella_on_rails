@@ -1,0 +1,11 @@
+<% queue.each do |q| %>
+	<li id="dl_<%= h q['id'] -%>">
+		<%= h q['nzbName'] -%>
+		<br />
+		<% if q['id'] == downloading[0]['id'] %>
+		<span class="small"><%= h status['percent_complete'] -%>% Complete, file size: <%= q['total_mb']%> MB, <%= h status['queued_mb']-%>MB or about <%= h status['eta'].to_i / 60 -%> minutes left</span>
+		<% else %>
+		<span class="small">Not Downloading, file size: <%= q['total_mb']%> MB</span>
+		<% end %>
+	</li>
+<% end %>
